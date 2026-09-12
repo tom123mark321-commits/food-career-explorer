@@ -48,7 +48,7 @@ async function inflate(bytes:Uint8Array,method:number){
   if(method!==8)throw new Error(`暂不支持 ZIP 压缩方式 ${method}`);
   if(typeof DecompressionStream==='undefined')throw new Error('当前浏览器不支持直接读取 XLSX，请改用 CSV。');
   const ds=new DecompressionStream('deflate-raw');
-  const stream=new Blob([bytes]).stream().pipeThrough(ds);
+  const stream=new Blob([new Uint8Array(bytes)]).stream().pipeThrough(ds);
   return new Uint8Array(await new Response(stream).arrayBuffer());
 }
 
