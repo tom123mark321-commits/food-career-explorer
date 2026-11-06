@@ -4,7 +4,7 @@ import { AppProvider } from './context/AppContext';
 import App from './App';
 import './styles.css';
 
-const root = createRoot(document.getElementById('app')!);
+const root = createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
     <AppProvider>
