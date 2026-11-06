@@ -1,14 +1,15 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { AppProvider } from './context/AppContext';
 import App from './App';
 import './styles.css';
 
-const root = createRoot(document.getElementById('root')!);
-root.render(
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Missing #root mount element');
+}
+
+createRoot(rootElement).render(
   <React.StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <App />
   </React.StrictMode>
 );
